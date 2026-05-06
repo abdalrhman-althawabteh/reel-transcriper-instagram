@@ -2,6 +2,7 @@ import yt_dlp
 import os
 import uuid
 from config import settings
+from audio import get_ffmpeg_exe
 
 
 def download_video(url: str, output_dir: str) -> str:
@@ -16,6 +17,7 @@ def download_video(url: str, output_dir: str) -> str:
         "no_warnings": False,
         "socket_timeout": 30,
         "merge_output_format": "mp4",
+        "ffmpeg_location": get_ffmpeg_exe(),
     }
 
     if settings.cookies_file:
